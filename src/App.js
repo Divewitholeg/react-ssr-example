@@ -3,11 +3,17 @@ import { Route, Routes, Link } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Articles } from "./pages/Articles";
+import styled from "styled-components";
+
+const GreenHeading = styled.h1`
+  color: green;
+  font-size: 2rem;
+`;
 
 const App = () => {
   return (
     <>
-      <h1>Server Side Rendering Example</h1>
+      <GreenHeading>Server Side Rendering Example</GreenHeading>
       <nav>
         <ul>
           <li>
