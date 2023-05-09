@@ -5,6 +5,7 @@ import { About } from "./pages/About";
 import { Articles } from "./pages/Articles";
 import { Redux } from "./pages/Redux";
 import { Mobx } from "./pages/Mobx";
+import { Recoil } from "./pages/Recoil";
 import styled from "styled-components";
 
 const GreenHeading = styled.h1`
@@ -33,6 +34,9 @@ const App = () => {
           <li>
             <Link to="mobx">Mobx</Link>
           </li>
+          <li>
+            <Link to="recoil">Recoil</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -41,6 +45,7 @@ const App = () => {
         <Route path="/articles" element={<Articles />} />
         <Route path="/redux" element={<Redux />} />
         <Route path="/mobx" element={<Mobx />} />
+        <Route path="/recoil" element={<Recoil />} />
       </Routes>
     </>
   );

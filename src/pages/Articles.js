@@ -1,15 +1,27 @@
-import React from "react";
-import { CounterButtonRecoil } from "../CounterButtonRecoil";
-import { RecoilRoot } from "recoil";
-import { DisplayRecoilValue } from "../DisplayRecoilValue";
+import React, { useState, useEffect } from "react";
 
 export const Articles = () => {
+  const [articles, setArticles] = useState(window && window.preloadedArticles);
+
+  useEffect(() => {
+    if (window && !window.preloadedArticles) {
+      console.log("No preloaded articles found, loading from server");
+      fetch("/api/articles")
+        .then((response) => response.json())
+        .then((data) => setArticles(data));
+    }
+  }, []);
+
   return (
-    <RecoilRoot>
+    <>
       <h1>Articles</h1>
-      <DisplayRecoilValue />
-      <h2>Implement Counter with Recoil</h2>
-      <CounterButtonRecoil />
-    </RecoilRoot>
+      {articles &&
+        articles.map((article) => (
+          <div key={article.title}>
+            <h3>{article.title}</h3>
+            <p>by {article.content}</p>
+          </div>
+        ))}
+    </>
   );
 };
